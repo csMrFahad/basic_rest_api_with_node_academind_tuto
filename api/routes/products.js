@@ -8,14 +8,19 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  res.status(200).json({
+  const product = {
+    name: req.body.name,
+    price: req.body.price,
+  };
+  res.status(201).json({
     message: "Handling Post to /products",
+    createdProduct: product,
   });
 });
 
 router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
-  res.status(201).json({
+  res.status(200).json({
     message: "Handling Get to /products/productId",
     id: id,
   });
